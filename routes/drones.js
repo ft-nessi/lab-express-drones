@@ -20,7 +20,7 @@ router.post("/drones/create", async (req, res, next) => {
   // Iteration #3: Add a new drone
   const droneForm = new Drones({ ...req.body });
   await droneForm.save();
-  res.redirect("drones");
+  res.redirect("/drones");
 });
 
 router.get("/drones/:id/edit", async (req, res, next) => {
@@ -35,12 +35,15 @@ router.post("/drones/:id/edit", async (req, res, next) => {
   const droneId = mongoose.Types.ObjectId(req.params.id);
   console.log(droneId);
   await Drones.findByIdAndUpdate(droneId, { ...req.body });
-  res.redirect("drones");
+  res.redirect("/drones");
 });
 
-router.post("/drones/:id/delete", (req, res, next) => {
+router.post("/drones/:id/delete", async (req, res, next) => {
   // Iteration #5: Delete the drone
-  // ... your code here
+  const droneId = mongoose.Types.ObjectId(req.params.id);
+  await Drones.findByIdAndRemove(droneId, { ...req.body });
+  res.redirect("/drones");
+
 });
 
 module.exports = router;
