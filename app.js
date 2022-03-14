@@ -9,8 +9,6 @@ require('./db');
 // https://www.npmjs.com/package/express
 const express = require('express');
 
-console.log("Olá Renato")
-
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require('hbs');
