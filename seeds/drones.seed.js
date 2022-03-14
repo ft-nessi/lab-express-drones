@@ -2,10 +2,7 @@
 
 require("../db");
 
-
-//Question: Why const async?
-const async = require("hbs/lib/async");
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 const Drone = require("../models/Drone.model")
 
 const drones = [
